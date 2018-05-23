@@ -1,17 +1,18 @@
 const sendEmailMessage = require('./sendEmailMessage');
+const dbModel = require('../config/db')
 
-const users = [];
 
 //  todo: make methods async
 module.exports = {
-    add(model) {
+    async add(model) {
         //  todo: replace with validation lib
         if (!model || !model.name || !model.password || !model.email)
             throw Error('Invalid user');
-        users.push(model);
-        sendEmailMessage(model.email, 'Created', 'Your account has been created');
+        var saved = await new dbModel.consumer(Object.assign(model))
+            .save();
+        sendEmailMessage(model.email, 'Created', `Your account has been created: ${JSON.stringify(saved)}`);
     },
     get() {
-        return users;
+        throw Error('Not implemented');
     }
 };

@@ -5,10 +5,10 @@ var consumerController = express.Router();
 
 consumerController.get('/', (req, res) => res.send('users'));
 
-consumerController.post('/', (req, res) => {
+consumerController.post('/', async (req, res) => {
     var model = req.body;
     try {
-        consumerService.add(model);
+        await consumerService.add(model);
         res.status(201).send(consumerService.get());
     } catch (error) {
         if (error.message === 'Invalid user')
