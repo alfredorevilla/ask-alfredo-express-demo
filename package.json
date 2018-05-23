@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "mon": "node ./node_modules/nodemon/bin/nodemon.js",
+    "startmon": "node ./node_modules/nodemon/bin/nodemon.js",
     "test": "node ./node_modules/mocha/bin/mocha ./tests/*.test.js",
     "testmon": "node ./node_modules/mocha/bin/mocha ./tests/*.test.js --watch",
-    "cc": "node ./node_modules/nyc/bin/nyc.js ./node_modules/mocha/bin/mocha  ./tests/**/*.test.js"
+    "testdebug": "node ./node_modules/mocha/bin/mocha --inspect-brk ./tests/**/*.test.js --watch",
+    "testcc": "node ./node_modules/nyc/bin/nyc.js ./node_modules/mocha/bin/mocha  ./tests/**/*.test.js"
   },
   "dependencies": {
     "bookshelf": "0.13.3",
