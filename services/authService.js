@@ -1,4 +1,4 @@
-module.exports = class AuthService {
+module.exports = class {
     constructor(userStore, passwordValidator) {
         this.userStore = userStore;
         this.passwordValidator = passwordValidator;
