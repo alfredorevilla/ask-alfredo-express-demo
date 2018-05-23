@@ -1,12 +1,12 @@
 module.exports = class {
-    constructor(userStore, passwordValidator) {
+    constructor(userStore, passwordHasher) {
         this.userStore = userStore;
-        this.passwordValidator = passwordValidator;
+        this.passwordHasher = passwordHasher;
     }
     async login(email, password) {
         var user = await this.userStore.getByEmail(email);
         if (!user)
             return false;
-        return await this.passwordValidator.tryValidate(this.userStore.getHashedPassword(email), password);
+        return await this.passwordHasher.verifyHashedPassword(this.userStore.getHashedPassword(user), password);
     }
 }

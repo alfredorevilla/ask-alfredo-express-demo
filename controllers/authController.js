@@ -4,7 +4,8 @@ module.exports = (authService) => {
     const authController = express.Router();
     authController.post('/login', async (req, res, next) => {
         try {
-            await authService.login(1, 1);
+            const { email, password } = req.body;
+            res.status((await authService.login(email, password)) ? 200 : 403).end();
         } catch (error) {
             next(error);
         }

@@ -6,7 +6,7 @@ var logger = require('morgan');
 const consumerController = require('./controllers/consumerController');
 const contractorController = require('./controllers/contractorController');
 const authController = require('./controllers/authController');
-const authService = new (require('./services/authService'))(require('./services/userStore'), {})
+const authService = new (require('./services/authService'))(require('./services/userStore'), (require('./services/weakPasswordHasher')));
 
 var app = express();
 
