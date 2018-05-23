@@ -6,7 +6,8 @@
     "start": "node ./bin/www",
     "mon": "node ./node_modules/nodemon/bin/nodemon.js",
     "test": "node ./node_modules/mocha/bin/mocha ./tests/*.test.js",
-    "testmon": "node ./node_modules/mocha/bin/mocha ./tests/*.test.js --watch"
+    "testmon": "node ./node_modules/mocha/bin/mocha ./tests/*.test.js --watch",
+    "cc": "node ./node_modules/nyc/bin/nyc.js ./node_modules/mocha/bin/mocha  ./tests/**/*.test.js"
   },
   "dependencies": {
     "bookshelf": "0.13.3",
@@ -21,6 +22,7 @@
   "devDependencies": {
     "chai": "4.1.2",
     "mocha": "5.2.0",
-    "nodemon": "1.17.4"
+    "nodemon": "1.17.4",
+    "nyc": "11.8.0"
   }
 }
