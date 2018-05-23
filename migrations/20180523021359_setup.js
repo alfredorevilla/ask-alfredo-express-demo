@@ -1,20 +1,14 @@
 exports.up = async (knex) => {
     await Promise.all([
-        knex.schema.createTable('consumer', (table) => {
-            table.increments('id').primary();
-            table.string('name');
-            table.string('password');
-            table.string('email').unique();
-        }),
         knex.schema.createTable('user', (table) => {
             table.increments('id').primary();
-            table.string('name');
-            table.string('hashedPassword');
-            table.string('email').unique();
+            table.string('name').notNullable();
+            table.string('hashedPassword').notNullable();
+            table.string('email').notNullable().unique();
+            table.string('role').notNullable();
         })]);
 };
 
 exports.down = async (knex) => {
-    await Promise.all([knex.schema.dropTable('user'),
-    knex.schema.dropTable('consumer')]);
+    await Promise.all([knex.schema.dropTable('user')]);
 };
