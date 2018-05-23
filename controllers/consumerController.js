@@ -14,7 +14,7 @@ consumerController.post('/', async (req, res) => {
         if (error.message === 'Invalid user')
             res.status(400).send('Invalid body');
         else
-            res.send(error.message || 'Error');
+            res.status(500).send(error.message);
     }
 });
 

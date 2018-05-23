@@ -22,12 +22,16 @@ app.use((req, res, next) => res.status(404).end());
 
 // error handler
 app.use(function (err, req, res, next) {
+
+  console.warn('app error');
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
   res.status(err.status || 500);
+  if (err.message)
+    res.send(err.message);
   res.end();
 });
 
