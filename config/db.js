@@ -7,6 +7,9 @@ const bookshelf = require('bookshelf')(knex);
 const consumer = bookshelf.Model.extend({
     tableName: 'consumer'
 });
+const user = bookshelf.Model.extend({
+    tableName: 'user'
+});
 
 //  todo: complete
 const createDatabaseIfNotExists = async () => {
@@ -22,6 +25,7 @@ const createDatabaseIfNotExists = async () => {
 
 module.exports = {
     bookshelf,
-    consumer
+    consumer,
+    user
 };
 

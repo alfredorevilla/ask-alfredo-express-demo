@@ -6,6 +6,7 @@ var logger = require('morgan');
 const consumerController = require('./controllers/consumerController');
 const contractorController = require('./controllers/contractorController');
 const authController = require('./controllers/authController');
+const authService = new (require('./services/authService'))(require('./services/userStore'), {})
 
 var app = express();
 
@@ -17,7 +18,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/consumers', consumerController);
 app.use('/contractors', contractorController);
-app.use('/auth', authController);
+app.use('/auth', authController(authService));
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => res.status(404).end());
@@ -25,7 +26,6 @@ app.use((req, res, next) => res.status(404).end());
 // error handler
 app.use(function (err, req, res, next) {
 
-  console.warn('app error');
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
