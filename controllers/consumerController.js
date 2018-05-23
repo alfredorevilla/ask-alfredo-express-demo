@@ -3,8 +3,6 @@ var consumerService = require('../services/consumerService')
 
 var consumerController = express.Router();
 
-consumerController.get('/', (req, res) => res.send('users'));
-
 consumerController.post('/', async (req, res) => {
     var model = req.body;
     try {

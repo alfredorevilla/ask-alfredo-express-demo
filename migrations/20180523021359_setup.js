@@ -1,4 +1,4 @@
-exports.up = async (knex, Promise) => {
+exports.up = async (knex) => {
     await knex.schema.createTable('consumer', (table) => {
         table.increments('id').primary();
         table.string('name');
@@ -7,6 +7,6 @@ exports.up = async (knex, Promise) => {
     });
 };
 
-exports.down = async (knex, Promise) => {
+exports.down = async (knex) => {
     await knex.schema.dropTable('consumer');
 };
