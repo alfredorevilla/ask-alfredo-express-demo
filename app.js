@@ -1,3 +1,5 @@
+'use strict';
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -9,6 +11,10 @@ const authController = require('./controllers/authController');
 const authService = new (require('./services/authService'))(require('./services/userStore'), (require('./services/weakPasswordHasher')));
 const quoteController = require('./controllers/quoteController');
 const quoteService = require('./services/quoteService');
+const validator = require('./services/validator').validator;
+const validationService = {
+  isValid: (value, schema) => validator.isValid(value, schema)
+};
 
 var app = express();
 
@@ -21,7 +27,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/consumers', consumerController);
 app.use('/contractors', contractorController);
 app.use('/auth', authController(authService));
-app.use('/quote', quoteController(quoteService));
+app.use('/quote', quoteController(quoteService, validationService));
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => res.status(404).end());

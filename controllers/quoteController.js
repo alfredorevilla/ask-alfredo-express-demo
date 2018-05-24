@@ -1,15 +1,28 @@
-const express = require('express');
+'use strict';
 
-module.exports = (quoteService) => {
+const express = require('express');
+const validationAttributes = require('../services/validator').validationAttributes;
+
+const quoteProposalRequestSchema = {
+    consumerId: [validationAttributes.required, validationAttributes.minValue(1)],
+    contractorId: [validationAttributes.required, validationAttributes.minValue(1)],
+    lines: [validationAttributes.required, validationAttributes.minLength(1)]
+}
+
+module.exports = (quoteService, validationService) => {
     var controller = express.Router()
     controller.post('/', async (req, res, next) => {
-        const quoteProposal = req.body;
-        //  todo: validate
-        if (!quoteProposal)
-            res.status(400).end();
-        else {
-            await quoteService.propose(Object.assign(quoteProposal));
-            res.status(202).end();
+        try {
+            const quoteProposalRequest = req.body;
+            //  todo: validate
+            if (!quoteProposalRequest || !validationService.isValid(quoteProposalRequest, quoteProposalRequestSchema))
+                res.status(400).end();
+            else {
+                await quoteService.propose(Object.assign(quoteProposalRequest));
+                res.status(202).end();
+            }
+        } catch (error) {
+            next(error);
         }
     });
     return controller;
