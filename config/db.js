@@ -1,14 +1,22 @@
+'use strict';
+
 const config = require('../knexfile').development;
 
 const knex = require('knex')(config);
 const bookshelf = require('bookshelf')(knex);
-
 
 const consumer = bookshelf.Model.extend({
     tableName: 'consumer'
 });
 const user = bookshelf.Model.extend({
     tableName: 'user'
+});
+const quote = bookshelf.Model.extend({
+    tableName: 'quote',
+    items: () => this.hasMany(quoteItem)
+});
+const quoteItem = bookshelf.Model.extend({
+    tableName: 'quote_item'
 });
 
 //  todo: complete
@@ -26,6 +34,7 @@ const createDatabaseIfNotExists = async () => {
 module.exports = {
     consumer,
     user,
+    quote,
     knex
 };
 
