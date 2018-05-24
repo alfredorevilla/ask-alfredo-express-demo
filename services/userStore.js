@@ -1,3 +1,5 @@
+//  todo: move to models folder
+
 const db = require('../config/db');
 
 module.exports = (passwordHasher) => {

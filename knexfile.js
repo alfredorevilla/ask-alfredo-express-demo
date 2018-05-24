@@ -1,6 +1,5 @@
-//  todo: move file to config ?
+//  todo: move file to config folder?
 module.exports = {
-
   development: {
     client: 'pg',
     connection: {
@@ -18,5 +17,4 @@ module.exports = {
       tableName: 'knex_migrations'
     }
   }
-
 };

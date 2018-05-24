@@ -1,5 +1,6 @@
 'use strict';
 
+//  todo: remove validate methods in order to make it validator implementation agnostic
 const validationAttributes = {
     required: () => { return { validate: (validatable) => validatable }; },
     minValue: (value) => { return { validate: (validatable) => validatable && validatable >= value }; },
