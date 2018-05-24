@@ -5,7 +5,7 @@ chai.use(require("chai-as-promised"));
 const expect = chai.expect;
 
 const passwordHasher = {};
-const userStore = require('../services/userStore')(passwordHasher);
+const userStore = require('../models/userStore')(passwordHasher);
 
 const fake_user = { name: "Fake", email: "fake@fakedomain.com", role: "consumer" };
 const fake_user_email = fake_user.email;
