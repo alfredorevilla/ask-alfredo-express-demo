@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
+    "build": "npm i",
     "start": "node ./bin/www",
     "startmon": "node ./node_modules/nodemon/bin/nodemon.js",
     "test": "node ./node_modules/mocha/bin/mocha ./tests/*.test.js",
