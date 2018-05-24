@@ -4,7 +4,13 @@ const db = require('../config/db');
 
 module.exports = {
     async add(quote) {
-        var model = new db.quote(quote);
+        const values = {
+            consumerId: quote.consumerId,
+            contractorId: quote.contractorId
+        }
+        var model = new db.quote(values);
+        if (quote.items)
+            quote.items.forEach(item => model.items().create(item));
         model.set('state', 'proposed');
         await model.save();
     },

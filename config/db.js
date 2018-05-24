@@ -1,7 +1,8 @@
+//  todo: move to models
+
 'use strict';
 
 const config = require('../knexfile').development;
-
 const knex = require('knex')(config);
 const bookshelf = require('bookshelf')(knex);
 
@@ -13,10 +14,11 @@ const user = bookshelf.Model.extend({
 });
 const quote = bookshelf.Model.extend({
     tableName: 'quote',
-    items: () => this.hasMany(quoteItem)
+    items: function () { return this.hasMany(quoteItem, 'quoteId'); }
 });
 const quoteItem = bookshelf.Model.extend({
-    tableName: 'quote_item'
+    tableName: 'quote_item',
+    quote: function () { return this.belongsTo(quote, 'quoteId') }
 });
 
 //  todo: complete
@@ -35,6 +37,7 @@ module.exports = {
     consumer,
     user,
     quote,
+    quoteItem,
     knex
 };
 

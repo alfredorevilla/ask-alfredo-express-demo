@@ -13,13 +13,13 @@ exports.up = async (knex) => {
             table.increments('id').primary();
             table.integer('consumerId').notNullable();
             table.integer('contractorId').notNullable();
-            table.string('state').notNullable().unique();
+            table.string('state').notNullable();
         }),
         knex.schema.createTable('quote_item', (table) => {
             table.increments('id').primary();
             table.integer('quoteId').notNullable();
             table.foreign('quoteId').references('quote.id');
-            table.decimal('total').notNullable().unique();
+            table.decimal('total').notNullable();
         })
     ]);
 
