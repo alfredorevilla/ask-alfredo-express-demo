@@ -25,5 +25,18 @@ module.exports = (quoteService, validationService) => {
             next(error);
         }
     });
+    controller.put('/accept/:id', async (req, res, next) => {
+        try {
+            const id = req.params.id;
+            if (!id || id <= 0)
+                res.status(400).end();
+            else {
+                await quoteService.accept(id);
+                res.status(200).end();
+            }
+        } catch (error) {
+            next(error);
+        }
+    });
     return controller;
 };
