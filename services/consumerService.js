@@ -1,3 +1,5 @@
+//  todo: remove
+
 const sendEmailMessage = require('./sendEmailMessage');
 const dbModel = require('../config/db')
 

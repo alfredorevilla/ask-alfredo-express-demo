@@ -3,13 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "npm i",
     "start": "node ./bin/www",
     "startmon": "node ./node_modules/nodemon/bin/nodemon.js",
     "test": "node ./node_modules/mocha/bin/mocha ./tests/*.test.js",
     "testmon": "node ./node_modules/mocha/bin/mocha ./tests/*.test.js --watch",
     "testdebug": "node ./node_modules/mocha/bin/mocha --inspect-brk ./tests/**/*.test.js --watch",
-    "testcc": "node ./node_modules/nyc/bin/nyc.js ./node_modules/mocha/bin/mocha ./tests/**/*.test.js"
+    "testcc": "node ./node_modules/nyc/bin/nyc.js ./node_modules/mocha/bin/mocha ./tests/**/*.test.js",
+    "updatedb":"node ./node_modules/knex/bin/cli migrate:latest"
   },
   "dependencies": {
     "bookshelf": "0.13.3",

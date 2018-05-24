@@ -1,3 +1,5 @@
+//  todo: remove
+
 const contractors = [];
 
 //  todo: make methods async
