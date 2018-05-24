@@ -10,6 +10,12 @@ const validationAttributes = {
 
 const validator = {
     validate(obj, schema) {
+
+        if (!obj)
+            throw Error('Cannot validate null or undefined object');
+        if (!schema)
+            throw Error('Cannot validate using a null or undefined schema');
+
         for (const key1 in schema) {
             var validators = schema[key1];
             if (validators && Array.isArray(validators)) {
