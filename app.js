@@ -7,6 +7,8 @@ const consumerController = require('./controllers/consumerController');
 const contractorController = require('./controllers/contractorController');
 const authController = require('./controllers/authController');
 const authService = new (require('./services/authService'))(require('./services/userStore'), (require('./services/weakPasswordHasher')));
+const quoteController = require('./controllers/quoteController');
+const quoteService = require('./services/quoteService');
 
 var app = express();
 
@@ -19,6 +21,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/consumers', consumerController);
 app.use('/contractors', contractorController);
 app.use('/auth', authController(authService));
+app.use('/quote', quoteController(quoteService));
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => res.status(404).end());
