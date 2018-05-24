@@ -24,8 +24,8 @@ const createDatabaseIfNotExists = async () => {
 };
 
 module.exports = {
-    bookshelf,
     consumer,
-    user
+    user,
+    knex
 };
 
