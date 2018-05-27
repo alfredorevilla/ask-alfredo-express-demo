@@ -7,7 +7,7 @@ exports.up = async (knex) => {
             table.string('name').notNullable();
             table.string('hashedPassword').notNullable();
             table.string('email').notNullable().unique();
-            table.string('role').notNullable();
+            table.string('type').notNullable();
         }),
         knex.schema.createTable('quote', (table) => {
             table.increments('id').primary();
@@ -20,6 +20,7 @@ exports.up = async (knex) => {
             table.integer('quoteId').notNullable();
             table.foreign('quoteId').references('quote.id');
             table.decimal('total').notNullable();
+            table.decimal('type').notNullable();
         })
     ]);
 
