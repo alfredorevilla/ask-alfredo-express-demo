@@ -15,6 +15,12 @@ const validationAttributes = {
     oneOf: (value) => { return { validate: (validatable) => value.indexOf(validatable) !== -1 } }
 };
 
+class ValidationError extends Error {
+    constructor(message) {
+        super(message);
+    }
+}
+
 const validator = {
     validate(obj, schema) {
 
@@ -31,7 +37,7 @@ const validator = {
                     if (element.validate instanceof Function) {
                         var value = obj[key1];
                         if (!element.validate(value))
-                            throw Error(`Validation failed for member ${key1}`)
+                            throw new ValidationError(`Validation failed for member ${key1}`);
                     }
                 }
             }
@@ -49,5 +55,6 @@ const validator = {
 
 module.exports = {
     validator,
-    validationAttributes
+    validationAttributes,
+    ValidationError
 };
