@@ -3,16 +3,15 @@
 const express = require('express');
 const { validationAttributes, validator } = require('../services/validator');
 
+const quoteItemSchema = {
+    type: [validationAttributes.required],
+    total: [validationAttributes.required, validationAttributes.minValue(0)]
+}
 
 const quoteSchema = {
     consumerId: [validationAttributes.required, validationAttributes.minValue(1)],
     contractorId: [validationAttributes.required, validationAttributes.minValue(1)],
     lines: [validationAttributes.required, validationAttributes.minLength(1), validationAttributes.element(quoteItemSchema)]
-}
-
-const quoteItemSchema = {
-    type: [validationAttributes.required],
-    total: [validationAttributes.required, validationAttributes.minValue(0)]
 }
 
 module.exports = (quoteService, validationService = validator) => {

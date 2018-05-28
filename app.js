@@ -8,7 +8,8 @@ var logger = require('morgan');
 const consumerController = require('./controllers/consumerController');
 const contractorController = require('./controllers/contractorController');
 const authController = require('./controllers/authController');
-const authService = new (require('./services/authService'))(require('./models/userStore'), (require('./services/weakPasswordHasher')));
+const userStore = require('./models/userStore');
+const authService = new (require('./services/authService'))(userStore, (require('./services/weakPasswordHasher')));
 const quoteController = require('./controllers/quoteController');
 const quoteService = require('./services/quoteService');
 const validator = require('./services/validator').validator;
@@ -26,6 +27,7 @@ app.use('/consumers', consumerController);
 app.use('/contractors', contractorController);
 app.use('/auth', authController(authService));
 app.use('/quote', quoteController(quoteService, validationService));
+app.use('/user', require('./controllers/userController')(require('./services/userService')(userStore)));
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => res.status(404).end());

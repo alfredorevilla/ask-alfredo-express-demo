@@ -5,11 +5,14 @@ const validationAttributes = {
     required: () => { return { validate: (validatable) => validatable }; },
     minValue: (value) => { return { validate: (validatable) => validatable && validatable >= value }; },
     maxValue: (value) => { return { validate: (validatable) => validatable && validatable <= value }; },
+    //  todo:review
     minLength: (value) => { return { validate: (validatable) => validatable && validatable.length && validatable.length >= value }; },
+    maxLength: (value) => { return { validate: (validatable) => validatable <= value } },
     element: (schema) => {
         return { validate: (validatable) => { if (validatable && Array.isArray(validatable)) { validatable.forEach(item => validator.validate(item, schema)); return true; } } }
     },
-    email: (value) => { return { validate: (validatable) => /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(validatable.toLowerCase()) } }
+    email: (value) => { return { validate: (validatable) => /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(validatable.toLowerCase()) } },
+    oneOf: (value) => { return { validate: (validatable) => value.indexOf(validatable) !== -1 } }
 };
 
 const validator = {
