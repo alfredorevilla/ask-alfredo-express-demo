@@ -1,9 +1,10 @@
 'use strict';
 
 const express = require('express');
-const validationAttributes = require('../services/validator').validationAttributes;
+const  { validationAttributes, validator} = require('../services/validator');
 
-const quoteProposalRequestSchema = {
+
+const quoteSchema = {
     consumerId: [validationAttributes.required, validationAttributes.minValue(1)],
     contractorId: [validationAttributes.required, validationAttributes.minValue(1)],
     lines: [validationAttributes.required, validationAttributes.minLength(1), validationAttributes.element(quoteItemSchema)]
@@ -14,13 +15,13 @@ const quoteItemSchema = {
     total: [validationAttributes.required, validationAttributes.minValue(0)]
 }
 
-module.exports = (quoteService, validationService) => {
+module.exports = (quoteService, validationService = validator) => {
     var controller = express.Router()
     controller.post('/', async (req, res, next) => {
         try {
             const quoteProposalRequest = req.body;
             //  todo: validate
-            if (!quoteProposalRequest || !validationService.isValid(quoteProposalRequest, quoteProposalRequestSchema))
+            if (!quoteProposalRequest || !validationService.isValid(quoteProposalRequest, quoteSchema))
                 res.status(400).end();
             else {
                 await quoteService.propose(Object.assign(quoteProposalRequest));
