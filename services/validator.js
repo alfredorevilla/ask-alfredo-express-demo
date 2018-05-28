@@ -8,7 +8,8 @@ const validationAttributes = {
     minLength: (value) => { return { validate: (validatable) => validatable && validatable.length && validatable.length >= value }; },
     element: (schema) => {
         return { validate: (validatable) => { if (validatable && Array.isArray(validatable)) { validatable.forEach(item => validator.validate(item, schema)); return true; } } }
-    }
+    },
+    email: (value) => { return { validate: (validatable) => /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(validatable.toLowerCase()) } }
 };
 
 const validator = {

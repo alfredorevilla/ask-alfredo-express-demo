@@ -1,7 +1,7 @@
 'use strict';
 
 const express = require('express');
-const  { validationAttributes, validator} = require('../services/validator');
+const { validationAttributes, validator } = require('../services/validator');
 
 
 const quoteSchema = {
