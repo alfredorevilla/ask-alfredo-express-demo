@@ -5,8 +5,11 @@ const validationAttributes = {
     required: () => { return { validate: (validatable) => validatable }; },
     minValue: (value) => { return { validate: (validatable) => validatable && validatable >= value }; },
     maxValue: (value) => { return { validate: (validatable) => validatable && validatable <= value }; },
-    minLength: (value) => { return { validate: (validatable) => validatable && validatable.length && validatable.length >= value }; }
-}
+    minLength: (value) => { return { validate: (validatable) => validatable && validatable.length && validatable.length >= value }; },
+    element: (schema) => {
+        return { validate: (validatable) => { if (validatable && Array.isArray(validatable)) { validatable.forEach(item => validator.validate(item, schema)); return true; } } }
+    }
+};
 
 const validator = {
     validate(obj, schema) {
@@ -38,9 +41,9 @@ const validator = {
             return false;
         }
     }
-}
+};
 
 module.exports = {
     validator,
     validationAttributes
-}
+};

@@ -6,7 +6,12 @@ const validationAttributes = require('../services/validator').validationAttribut
 const quoteProposalRequestSchema = {
     consumerId: [validationAttributes.required, validationAttributes.minValue(1)],
     contractorId: [validationAttributes.required, validationAttributes.minValue(1)],
-    lines: [validationAttributes.required, validationAttributes.minLength(1)]
+    lines: [validationAttributes.required, validationAttributes.minLength(1), validationAttributes.element(quoteItemSchema)]
+}
+
+const quoteItemSchema = {
+    type: [validationAttributes.required],
+    total: [validationAttributes.required, validationAttributes.minValue(0)]
 }
 
 module.exports = (quoteService, validationService) => {
