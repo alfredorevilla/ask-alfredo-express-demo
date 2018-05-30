@@ -2,6 +2,7 @@
 
 const express = require('express');
 const { validationAttributes, validator } = require('../services/validator');
+const handleAsyncError = require('./handleAsyncError')
 
 const quoteItemSchema = {
     type: [validationAttributes.required],
@@ -16,6 +17,17 @@ const quoteSchema = {
 
 module.exports = (quoteService, validationService = validator) => {
     var controller = express.Router()
+    controller.get('/', handleAsyncError(async (req, res, next) => {        
+        res.send(await quoteService.get());
+    }));
+    controller.get('/:id', handleAsyncError(async (req, res, next) => {
+        validator.validate(req.params, { id: [validationAttributes.required()] });
+        var model = await quoteService.find(req.params.id);
+        if (!model)
+            res.status(404).end();
+        else
+            res.send(model);
+    }));
     controller.post('/', async (req, res, next) => {
         try {
             const quoteProposalRequest = req.body;

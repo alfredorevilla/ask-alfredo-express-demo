@@ -22,7 +22,7 @@ app.use(cookieParser());
 app.use('/consumers', consumerController);
 app.use('/contractors', contractorController);
 app.use('/auth', authController(authService));
-app.use('/quote', require('./controllers/quoteController')(require('./services/quoteService')));
+app.use('/quote', require('./controllers/quoteController')(require('./services/quoteService')(require('./models/quoteStore'))));
 app.use('/user', require('./controllers/userController')
   (require('./services/userService')(userStore)));
 app.use('/geo', require('./controllers/geoController')(require('./services/geoService')));

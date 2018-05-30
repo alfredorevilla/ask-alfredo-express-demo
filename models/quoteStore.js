@@ -3,6 +3,12 @@
 const db = require('../config/db');
 
 module.exports = {
+    async find(id) {
+        return await db.quote.where({ id }).fetch({ withRelated: ['items'] });
+    },
+    async get() {
+        return await db.quote.fetchAll();
+    },
     async add(quote) {
         const values = {
             consumerId: quote.consumerId,
