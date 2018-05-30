@@ -21,7 +21,6 @@ module.exports = (quoteService, validationService = validator) => {
         res.send(await quoteService.get());
     }));
     controller.get('/:id', handleAsyncError(async (req, res, next) => {
-        validator.validate(req.params, { id: [validationAttributes.required()] });
         var model = await quoteService.find(req.params.id);
         if (!model)
             res.status(404).end();
