@@ -9,7 +9,7 @@ const { ValidationError } = require('./services/validator');
 const consumerController = require('./controllers/consumerController');
 const contractorController = require('./controllers/contractorController');
 const authController = require('./controllers/authController');
-const userStore = require('./models/userStore');
+const userStore = require('./models/userStore')(require('./services/weakPasswordHasher'));
 const authService = new (require('./services/authService'))(userStore, (require('./services/weakPasswordHasher')));
 
 var app = express();

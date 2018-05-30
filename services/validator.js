@@ -2,16 +2,16 @@
 
 //  todo: remove validate methods in order to make it validator implementation agnostic
 const validationAttributes = {
-    required: () => { return { validate: (validatable) => validatable }; },
+    required: () => { return { validate: (validatable) => validatable !== undefined && validatable !== null && (typeof validatable !== 'string' || validatable.length > 0) }; },
     minValue: (value) => { return { validate: (validatable) => validatable && validatable >= value }; },
     maxValue: (value) => { return { validate: (validatable) => validatable && validatable <= value }; },
     //  todo:review
     minLength: (value) => { return { validate: (validatable) => validatable && validatable.length && validatable.length >= value }; },
-    maxLength: (value) => { return { validate: (validatable) => validatable <= value } },
+    maxLength: (value) => { return { validate: (validatable) => validatable.length <= value } },
     element: (schema) => {
         return { validate: (validatable) => { if (validatable && Array.isArray(validatable)) { validatable.forEach(item => validator.validate(item, schema)); return true; } } }
     },
-    email: (value) => { return { validate: (validatable) => /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(validatable.toLowerCase()) } },
+    email: () => { return { validate: (validatable) => typeof validatable === 'string' && /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(validatable.toLowerCase()) } },
     oneOf: (value) => { return { validate: (validatable) => value.indexOf(validatable) !== -1 } }
 };
 
@@ -29,11 +29,11 @@ const validator = {
         if (!schema)
             throw Error('Cannot validate using a null or undefined schema');
 
-        for (const key1 in schema) {
+        for (var key1 in schema) {
             var validators = schema[key1];
             if (validators && Array.isArray(validators)) {
-                for (let i = 0; i < validators.length; i++) {
-                    const element = validators[i];
+                for (var i = 0; i < validators.length; i++) {
+                    var element = validators[i];
                     if (element.validate instanceof Function) {
                         var value = obj[key1];
                         if (!element.validate(value))
@@ -53,8 +53,4 @@ const validator = {
     }
 };
 
-module.exports = {
-    validator,
-    validationAttributes,
-    ValidationError
-};
+module.exports = Object.assign(validationAttributes, { validator, validationAttributes, ValidationError });
