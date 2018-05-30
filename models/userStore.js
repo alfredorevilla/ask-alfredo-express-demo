@@ -18,18 +18,15 @@ module.exports = (passwordHasher) => {
             const { email } = user;
             return (await new db.user({ email }).fetch()).get('hashedPassword');
         },
-        async add(user, password) {
-            if (!user)
-                throw Error('user cannot be null');
-            if (!password)
-                throw Error('password cannot be null or empty');
-            var model = {};
-            Object.assign(model, user, { hashedPassword: passwordHasher.hashPassword(password) });
+        async add({ name, email, password, type, address }) {
             try {
-                await (new db.user(model)).save();
+                await (new db.user({ name, email, type, hashedPassword: passwordHasher.hashPassword(password) })).save();
             } catch (error) {
+                console.error({ error });
                 if (error.code == 23505)
                     throw Error('email already registered');
+                else if (error.code == 42703)
+                    throw Error('pg schema error');
                 else
                     throw Error('pg error');
             }
