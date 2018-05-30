@@ -23,7 +23,9 @@ app.use('/consumers', consumerController);
 app.use('/contractors', contractorController);
 app.use('/auth', authController(authService));
 app.use('/quote', require('./controllers/quoteController')(require('./services/quoteService')));
-app.use('/user', require('./controllers/userController')(require('./services/userService')(userStore)));
+app.use('/user', require('./controllers/userController')
+  (require('./services/userService')(userStore)));
+app.use('/geo', require('./controllers/geoController')(require('./services/geoService')));
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => res.status(404).end());
