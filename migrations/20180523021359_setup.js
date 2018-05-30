@@ -8,6 +8,7 @@ exports.up = async (knex) => {
             table.string('hashedPassword').notNullable();
             table.string('email').notNullable().unique();
             table.string('type').notNullable();
+            table.string('address');
         }),
         knex.schema.createTable('quote', (table) => {
             table.increments('id').primary();
