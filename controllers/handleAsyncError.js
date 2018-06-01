@@ -1,5 +1,5 @@
 /*
-    By design express won't respond with a 500 status code for  rejected promises so we must wrapper any call to and handle the error to the next middleware.
+    By design express won't handle any rejected (faulty) promise so we must handle any error and pass it to the next middleware. This function works like a wrapper to avoid repeating such handling in each controller call.
 */
 module.exports = action =>
     async (req, res, next) => {

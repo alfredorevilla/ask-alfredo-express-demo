@@ -2,7 +2,7 @@ const { validator, validationAttributes } = require('./validator');
 
 module.exports = (userStore, validationService = validator) => {
     return {
-        async add(user) {
+        async add(user = { name, email, type, password }) {
             validator.validate(user, {
                 name: [validationAttributes.required(), validationAttributes.minLength(10), validationAttributes.maxLength(255)],
                 email: [validationAttributes.required(), validationAttributes.email()],
