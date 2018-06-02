@@ -1,7 +1,7 @@
 const express = require('express');
 const handleAsyncError = require('./handleAsyncError');
 
-module.exports = (authService) => {
+module.exports = (authService = require('../services/authService')) => {
     const authController = express.Router();
     authController.post('/login', handleAsyncError(async (req, res, next) => {
         const { email, password } = req.body;

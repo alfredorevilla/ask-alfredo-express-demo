@@ -1,4 +1,7 @@
-//  todo: move to models
+/*
+    todo: move file to models.
+    todo: make it instanciable to allow closing the connection thus avoid pool saturation.
+*/
 
 'use strict';
 
@@ -21,14 +24,16 @@ const quoteItem = bookshelf.Model.extend({
     quote: function () { return this.belongsTo(quote, 'quoteId') }
 });
 
-//  todo: complete
+/*
+    todo: complete or move to another file to avoid cluttering this one
+*/
 const createDatabaseIfNotExists = async () => {
     var pg = require('pg');
     var config = Object.assign(config);
     const { database } = config;
     config.database = 'postgres';
     const client = new pg.Client(config);
-    await client.connect();
+    await client.connect();    
     await client.query(`if not exists (select 1 from pg_database where datname = ${database}) then create database ${database}; end if`)
     throw Error('Work in progress');
 };

@@ -1,6 +1,11 @@
 'use strict';
+/*
+    todo: move each object/class into its own file??
+*/
 
-//  todo: remove validate methods in order to make it validator implementation agnostic
+/*
+    todo: remove validate methods in order to make it validator implementation agnostic??
+*/
 const validationAttributes = {
     required: () => { return { validate: (validatable) => validatable !== undefined && validatable !== null && (typeof validatable !== 'string' || validatable.length > 0) }; },
     minValue: (value) => { return { validate: (validatable) => validatable && validatable >= value }; },
