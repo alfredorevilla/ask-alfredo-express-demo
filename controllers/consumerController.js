@@ -1,7 +1,7 @@
 const express = require('express');
 const handleAsyncError = require('./handleAsyncError');
 
-module.exports = (consumerService = require('../services/consumerService')) => {
+module.exports = (consumerService = require('../services/consumerService')()) => {
     var controller = express.Router();
     controller.post('/', handleAsyncError(async (req, res) => {
         var model = req.body;

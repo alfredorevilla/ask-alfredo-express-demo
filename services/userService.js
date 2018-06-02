@@ -1,6 +1,6 @@
 const { validator, validationAttributes } = require('./validator');
 
-module.exports = (userStore, validationService = validator) => {
+module.exports = (userStore = require('../models/userStore')(), validationService = validator) => {
     return {
         async add(user = { name, email, type, password }) {
             validator.validate(user, {

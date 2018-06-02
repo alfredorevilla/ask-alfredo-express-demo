@@ -2,7 +2,7 @@
 
 const db = require('../config/db');
 
-module.exports = (passwordHasher) => {
+module.exports = (passwordHasher = require('../services/weakPasswordHasher')) => {
     return {
         //  todo: move out and injec it (kinda anti-oop)
         db: db,
