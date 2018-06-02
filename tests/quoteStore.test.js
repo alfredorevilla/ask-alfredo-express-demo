@@ -18,10 +18,9 @@ describe('quoteStore', () => {
 
         it('success', () => expect(quoteStore.add({ consumerId: 0, contractorId: 0 })).to.not.be.rejected);
 
-        // it('success', () => expect(quoteStore.add({ consumerId: 0, contractorId: 0, items: [] })).to.not.be.rejected);
+        it('success', () => expect(quoteStore.add({ consumerId: 0, contractorId: 0, items: [] })).to.not.be.rejected);
 
-        //  todo: fix failure to auto set quoteItem.quoteId fk
-        it('success', () => expect(quoteStore.add({ consumerId: 0, contractorId: 0, items: [{ total: 0 }] })).to.not.be.rejected);
+        it('success', () => expect(quoteStore.add({ consumerId: 0, contractorId: 0, items: [{ total: 0, type: 'adfasda' }] })).to.not.be.rejected);
 
     });
 

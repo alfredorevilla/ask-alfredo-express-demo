@@ -11,8 +11,8 @@ module.exports = {
     },
     async add({ consumerId, contractorId, items = [] }) {
         var model = new db.quote({
-            consumerId: consumerId,
-            contractorId: contractorId
+            consumerId,
+            contractorId
         });
         model.set('state', 'proposed');
         /*

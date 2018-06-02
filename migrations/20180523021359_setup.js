@@ -21,7 +21,7 @@ exports.up = async (knex) => {
             table.integer('quoteId').notNullable();
             table.foreign('quoteId').references('quote.id');
             table.decimal('total').notNullable();
-            table.decimal('type').notNullable();
+            table.string('type').notNullable();
         })
     ]);
 
