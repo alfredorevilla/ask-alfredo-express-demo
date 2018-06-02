@@ -1,17 +1,11 @@
 'use strict';
 
-/*
-    todo: make stateless until otherwise required?
-*/
-module.exports = class {
-    constructor(userStore, passwordHasher) {
-        this.userStore = userStore;
-        this.passwordHasher = passwordHasher;
-    }
-    async login(email, password) {
-        var user = await this.userStore.getByEmail(email);
-        if (!user)
-            return false;
-        return await this.passwordHasher.verifyHashedPassword(this.userStore.getHashedPassword(user), password);
-    }
-}
+module.exports =
+    (userStore = require('../models/quoteStore'), passwordHasher = require('./weakPasswordHasher')) => ({
+        async login(email, password) {
+            var user = await userStore.getByEmail(email);
+            if (!user)
+                return false;
+            return await passwordHasher.verifyHashedPassword(userStore.getHashedPassword(user), password);
+        }
+    });
