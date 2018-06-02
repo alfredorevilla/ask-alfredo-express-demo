@@ -42,7 +42,7 @@ From the console or terminal run:<br/>
 |npm run testcc|Displays code coverage using nyc and mocha|
 
 ## Todo ##
-1. Solve quote model items collection not setting quoteId FK on save.
+1. ~~Solve quote model items collection not setting quoteId FK on save.~~
 1. Review and ensure correct async unit test assertion.
 1. Seed database.
 1. Refactor models into classes to keep control of connection pool size.
@@ -51,6 +51,8 @@ From the console or terminal run:<br/>
 1. Add manual tests (e.g. postman collections).
 1. Fix npm code coverage script.
 
+**Rest of todos as comments found in code.**
+
 ## Nice to have ##
 1. Jwt based auth.
 1. Auth enforced rules for quote update (E.G. Who can update/accept/reject a quote).
@@ -58,4 +60,5 @@ From the console or terminal run:<br/>
 1. DI container.
 1. Build and deploy enviroments.
 
-
+---
+*Last update: 06/02/18*

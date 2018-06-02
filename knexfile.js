@@ -1,4 +1,6 @@
-//  todo: move file to config folder?
+/*
+  todo: move this togethe ur under moder folder, otherwise how will the dev know its related?
+*/
 module.exports = {
   development: {
     client: 'pg',
