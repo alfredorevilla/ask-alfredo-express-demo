@@ -1,5 +1,5 @@
 /*
-  todo: move this togethe ur under moder folder, otherwise how will the dev know its related?
+  todo: move this to or under model folder, otherwise how will the dev know its related?
 */
 module.exports = {
   development: {

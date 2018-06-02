@@ -21,8 +21,12 @@ const validationAttributes = {
 };
 
 class ValidationError extends Error {
-    constructor(message) {
+    constructor(message, member) {
         super(message);
+        this._member = member;
+    }
+    get member() {
+        return this._member;
     }
 }
 
@@ -42,7 +46,7 @@ const validator = {
                     if (element.validate instanceof Function) {
                         var value = obj[key1];
                         if (!element.validate(value))
-                            throw new ValidationError(`Validation failed for member ${key1}`);
+                            throw new ValidationError(`Validation failed for member ${key1}`, key1);
                     }
                 }
             }

@@ -1,14 +1,13 @@
+require('../globals');
+
 /*
     todo: move to integration tests folder
 */
-
 var chai = require("chai");
 chai.use(require("chai-as-promised"));
 const expect = chai.expect;
 
-const passwordHasher = {};
-const userStore = require('../models/userStore')(passwordHasher);
-
+const userStore = require('../models/userStore')();
 const fake_user = { name: "Fake", email: "fake@fakedomain.com", role: "consumer" };
 const fake_user_email = fake_user.email;
 const invalid_email = "asdsadasdsas@asdsadasdsa.com";
@@ -20,10 +19,11 @@ const deleteUser = async () => {
         await userStore.db.user.where('email', fake_user_email).destroy();
 }
 
+
+
 describe('userStore', () => {
 
     before(async () => await deleteUser());
-    before(() => passwordHasher.hashPassword = (password) => password);
 
     describe('getByEmail', () => {
 
