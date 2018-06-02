@@ -1,16 +1,9 @@
-//  todo: remove
-
-const contractors = [];
-
-//  todo: make methods async
-module.exports = {
-    add(model) {
-        //  todo: replace with validation lib
-        if (!model || !model.name || !model.password || !model.email)
-            throw Error('Invalid contractor');
-        contractors.push(model);
+module.exports = (userService = require('./userService')()) => ({
+    add: async (user = { name, email, password }) => {
+        user = Object.assign(user, { type: 'contractor' });
+        await userService.add(user);
     },
-    get() {
-        return contractors;
+    get: async () => {
+        throw Error('Not implemented');
     }
-};
+});

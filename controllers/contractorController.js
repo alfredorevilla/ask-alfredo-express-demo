@@ -1,23 +1,14 @@
-//  todo: remove
+const express = require('express');
+const handleAsyncError = require('./handleAsyncError');
 
-var express = require('express');
-var contractorService = require('../services/contractorService')
-
-var contractorController = express.Router();
-
-contractorController.post('/', (req, res) => {
-    var model = req.body;
-    try {
-        contractorService.add(model);
-        res.status(201).send(contractorService.get());
-    } catch (error) {
-        if (error.message === 'Invalid contractor')
-            res.status(400).send('Invalid body');
-        else
-            res.send(error.message || 'Error');
-    }
-});
-
-module.exports = contractorController;
+module.exports = (contractorService = require('../services/contractorService')()) => {
+    var controller = express.Router();
+    controller.post('/', handleAsyncError(async (req, res) => {
+        var model = req.body;
+        await contractorService.add(model);
+        res.status(200).end();
+    }));
+    return controller;
+}
 
 

@@ -12,7 +12,7 @@ const validationAttributes = {
         return { validate: (validatable) => { if (validatable && Array.isArray(validatable)) { validatable.forEach(item => validator.validate(item, schema)); return true; } } }
     },
     email: () => { return { validate: (validatable) => typeof validatable === 'string' && /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i.test(validatable.toLowerCase()) } },
-    oneOf: (value) => { return { validate: (validatable) => value.indexOf(validatable) !== -1 } }
+    oneOf: (value) => { if (!Array.isArray(value)) throw Error('Value must be an array'); return { validate: (validatable) => value.indexOf(validatable) !== -1 } }
 };
 
 class ValidationError extends Error {

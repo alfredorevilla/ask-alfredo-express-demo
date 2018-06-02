@@ -1,8 +1,64 @@
 'use-strict';
 const expect = require('chai').expect;
-const { email, required, validator } = require('../services/validator');
+const { email, required, validator, oneOf } = require('../services/validator');
 
 describe('validationAttributes', () => {
+
+
+    describe('oneOf', () => {
+
+        it('valid', () => {
+
+            expect(oneOf(['ask', 'jack']).validate('ask')).to.be.true;
+
+        });
+
+        it('valid', () => {
+
+            expect(oneOf(['ask', 'jack']).validate('jack')).to.be.true;
+
+        });
+
+        it('valid', () => {
+
+            expect(oneOf([1, 2]).validate(1)).to.be.true;
+
+        });
+
+        it('valid', () => {
+
+            expect(oneOf([1, 2]).validate(2)).to.be.true;
+
+        });
+
+        it('invalid', () => {
+
+            expect(oneOf([1, 2]).validate(3)).to.be.false;
+
+        });
+
+
+        it('invalid', () => {
+
+            expect(oneOf([1, 2]).validate('1')).to.be.false;
+
+        });
+
+        it('invalid', () => {
+
+            expect(oneOf([1, 2]).validate('1')).to.be.false;
+
+        });
+
+        it('invalid', () => {
+
+            expect(oneOf([]).validate(1)).to.be.false;
+
+        });
+
+
+
+    });
 
     describe('required', () => {
 

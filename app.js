@@ -6,7 +6,7 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const { ValidationError } = require('./services/validator');
-const contractorController = require('./controllers/contractorController');
+
 const authController = require('./controllers/authController');
 const userStore = require('./models/userStore')(require('./services/weakPasswordHasher'));
 const authService = new (require('./services/authService'))(userStore, (require('./services/weakPasswordHasher')));
@@ -19,7 +19,7 @@ app.use(cookieParser());
 
 //  controllers
 app.use('/consumers', require('./controllers/consumerController')());
-app.use('/contractors', contractorController);
+app.use('/contractors',require('./controllers/contractorController')());
 app.use('/auth', authController(authService));
 app.use('/quote', require('./controllers/quoteController')(require('./services/quoteService')(require('./models/quoteStore'))));
 app.use('/user', require('./controllers/userController')
