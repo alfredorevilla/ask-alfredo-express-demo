@@ -1,6 +1,6 @@
+'use strict';
+
 const { validator, ValidationError } = require('./services/validator');
-
-
 
 class InvalidArgumentError extends Error {
     constructor(argumentName) {

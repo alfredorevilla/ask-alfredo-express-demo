@@ -1,4 +1,5 @@
 'use-strict';
+
 const expect = require('chai').expect;
 const weakPasswordHasher = require('../services/weakPasswordHasher');
 

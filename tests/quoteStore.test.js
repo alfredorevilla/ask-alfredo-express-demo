@@ -1,3 +1,5 @@
+'use strict';
+
 /*
     todo: move to integration tests folder
 */

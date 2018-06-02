@@ -1,11 +1,6 @@
-/*
-    todo: move file to models.
-    todo: make it instanciable to allow closing the connection thus avoid pool saturation.
-*/
-
 'use strict';
 
-const config = require('../knexfile').development;
+const config = require('./knexfile').development;
 const knex = require('knex')(config);
 const bookshelf = require('bookshelf')(knex);
 

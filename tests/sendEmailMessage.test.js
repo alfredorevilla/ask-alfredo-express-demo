@@ -1,4 +1,5 @@
 'use-strict';
+
 const expect = require('chai').expect;
 const sendEmailMessage = require('../services/sendEmailMessage');
 

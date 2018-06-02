@@ -1,6 +1,5 @@
-/*
-  todo: move this to or under model folder, otherwise how will the dev know its related?
-*/
+'use strict';
+
 module.exports = {
   development: {
     client: 'pg',

@@ -1,4 +1,8 @@
-//  todo: make stateless until otherwise required?
+'use strict';
+
+/*
+    todo: make stateless until otherwise required?
+*/
 module.exports = class {
     constructor(userStore, passwordHasher) {
         this.userStore = userStore;

@@ -1,3 +1,5 @@
+'use strict';
+
 //  todo: enforce auth
 module.exports = (quoteStore) => {
     return {

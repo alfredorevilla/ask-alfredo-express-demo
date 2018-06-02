@@ -1,6 +1,6 @@
 'use strict';
 
-const db = require('../config/db');
+const db = require('./db');
 
 module.exports = (passwordHasher = require('../services/weakPasswordHasher')) => {
     return {

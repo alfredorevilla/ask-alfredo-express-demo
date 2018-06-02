@@ -1,3 +1,5 @@
+'use strict';
+
 /*
     todo: since its heavily used it maybe a good idea to move validator to the globals module.
     

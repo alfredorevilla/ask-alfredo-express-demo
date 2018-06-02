@@ -1,4 +1,5 @@
 'use-strict';
+
 const expect = require('chai').expect;
 const { email, required, validator, oneOf } = require('../services/validator');
 

@@ -1,3 +1,5 @@
+'use strict';
+
 module.exports = {
     async getDistance(from, to) {
         return {
