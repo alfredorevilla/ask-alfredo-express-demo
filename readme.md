@@ -11,10 +11,21 @@
 1. json and env based configuration. See sendEmailMessage.js.
 
 
-## Coding premises ##
+## Coding premises/guidelines ##
 1. Use as much stateless objects and pure functions as possible and as few classes as possible to keep code as simple and small as possible
 1. Use as few dependencies as possible to keep project simple and showcase vanilla javascript expertise.
 1. Use as much validation as possible.
+1. Structure tests suites by object/class and function:
+```javascript
+describe('class', () => {
+
+    describe('function', () => {
+
+        it(...
+```
+
+
+
 
 
 ## Pre-requisites ##

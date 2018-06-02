@@ -1,12 +1,12 @@
 Fair Source License, version 0.9
 
-Copyright (C) 2018 Alfredo Revilla T.
+Copyright (C) 2018 Alfredo O. Revilla Tenorio.
 
-Licensor: Any entity: individual or company.
+Licensor: Alfredo O. Revilla Tenorio.
 
 Software: Quote API demo.
 
-Use Limitation: 2 users.
+Use Limitation: 10 users.
 
 License Grant. Licensor hereby grants to each recipient of the
 Software ("you") a non-exclusive, non-transferable, royalty-free and

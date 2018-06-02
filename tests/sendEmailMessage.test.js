@@ -3,7 +3,7 @@ const expect = require('chai').expect;
 const sendEmailMessage = require('../services/sendEmailMessage');
 
 /*
-    todo: make the logger injeactable in order to avoid mocking the info and "guessing" what's going on inside
+    todo: make the logger injeactable in order to avoid mocking the logging function (info) and guessing what's going on inside the sendEmailMessage function
 */
 let output = null;
 const node_env = 'NODE_ENV';
@@ -17,13 +17,12 @@ describe('sendEmailMessage', () => {
     it('prints No apikey set ... to console on null or empty env', () => {
 
         /*
-            todo: review the risks of changing env variables for the rest of tests
+            todo: research and review the risks of changing env variables for the rest of tests
         */
         process.env[node_env] = '';
-
         sendEmailMessage('', '', '');
 
-        expect(output).to.contains('No apikey set');
+        expect(output).to.contain('No apikey set');
 
     });
 
@@ -33,7 +32,7 @@ describe('sendEmailMessage', () => {
 
         sendEmailMessage('', '', '');
 
-        expect(output).to.contains('No apikey set');
+        expect(output).to.contain('No apikey set');
 
     });
 
@@ -43,7 +42,7 @@ describe('sendEmailMessage', () => {
 
         sendEmailMessage('', '', '');
 
-        expect(output).to.contains('Mail text');
+        expect(output).to.contain('Mail text');
 
     });
 
@@ -53,7 +52,7 @@ describe('sendEmailMessage', () => {
 
         sendEmailMessage('', '', '');
 
-        expect(output).to.contains('Mail text');
+        expect(output).to.contain('Mail text');
 
     });
 
