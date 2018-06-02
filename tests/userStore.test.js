@@ -1,4 +1,6 @@
-//  todo: move to integration tests folder
+/*
+    todo: move to integration tests folder
+*/
 
 var chai = require("chai");
 chai.use(require("chai-as-promised"));

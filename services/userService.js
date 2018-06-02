@@ -2,6 +2,9 @@ const { validator, validationAttributes } = require('./validator');
 
 module.exports = (userStore = require('../models/userStore')(), validationService = validator) => {
     return {
+        /*
+            keep using default values helps with intellisense  
+        */
         async add(user = { name, email, type, password }) {
             validator.validate(user, {
                 name: [validationAttributes.required(), validationAttributes.minLength(10), validationAttributes.maxLength(255)],
