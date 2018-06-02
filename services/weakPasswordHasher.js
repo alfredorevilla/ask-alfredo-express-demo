@@ -13,11 +13,11 @@ const base_64 = 'base64';
 module.exports = {
     verifyHashedPassword(hashedPassword, clearPassword) {
         ArgumentsValidator.validate({ hashedPassword, clearPassword }, { clearPassword: [required()], hashedPassword: [required()] })
-        Buffer.from(hashedPassword, base_64).toString() === clearPassword
+        return Buffer.from(hashedPassword, base_64).toString() === clearPassword
     },
     hashPassword(clearPassword) {
         ArgumentsValidator.validate({ clearPassword }, { clearPassword: [required()] })
-        Buffer.from(clearPassword).toString(base_64);
+        return Buffer.from(clearPassword).toString(base_64);
     }
 };
 

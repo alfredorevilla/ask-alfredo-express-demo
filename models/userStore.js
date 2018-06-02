@@ -22,7 +22,6 @@ module.exports = (passwordHasher = require('../services/weakPasswordHasher')) =>
             try {
                 await (new db.user({ name, email, type, hashedPassword: passwordHasher.hashPassword(password) })).save();
             } catch (error) {
-                console.info({ error });
                 if (error.code == 23505)
                     throw Error('email already registered');
                 else if (error.code == 42703)
