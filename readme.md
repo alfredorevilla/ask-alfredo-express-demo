@@ -54,6 +54,7 @@ From the console or terminal run:<br/>
 1. ~~Choose controller testing methodology and create tests.~~
 1. Add more integration tests.
 1. ~~Fix npm code coverage script.~~
+1. Move tests into folders according to the tested modules/files location (eg. tests\controllers\** for \controllers\**)
 
 **Rest of todos as comments found in code.**
 
@@ -64,6 +65,8 @@ From the console or terminal run:<br/>
 1. DI container.
 1. Build and deploy enviroments.
 1. Manual tests (e.g. postman collections).
+1. Save us from adding .test.js suffix to tests and just name them .js? 
+
 
 ---
 *Last update: 06/02/18*
