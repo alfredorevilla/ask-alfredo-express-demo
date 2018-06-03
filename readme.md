@@ -50,9 +50,8 @@ From the console or terminal run:<br/>
 1. Review and ensure correct async unit test assertion.
 1. Seed database.
 1. Refactor models into classes to keep control of connection pool size.
-1. Choose controller testing methodology and create tests.
+1. ~~Choose controller testing methodology and create tests.~~
 1. Add more integration tests.
-1. Add manual tests (e.g. postman collections).
 1. ~~Fix npm code coverage script.~~
 
 **Rest of todos as comments found in code.**
@@ -63,6 +62,7 @@ From the console or terminal run:<br/>
 1. Auto-linting, formatting, prettifying, test running on commit.
 1. DI container.
 1. Build and deploy enviroments.
+1. Manual tests (e.g. postman collections).
 
 ---
 *Last update: 06/02/18*

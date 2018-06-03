@@ -28,6 +28,7 @@
     "chai-as-promised": "7.1.1",
     "lodash.clone": "^4.5.0",
     "mocha": "5.2.0",
+    "node-mocks-http": "^1.7.0",
     "nodemon": "1.17.4",
     "nyc": "11.8.0"
   }
