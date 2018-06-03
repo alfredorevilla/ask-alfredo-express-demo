@@ -24,7 +24,7 @@ app.use('/auth', require('./controllers/authController')());
 */
 app.use('/quote', require('./controllers/quoteController')(require('./services/quoteService')(require('./models/quoteStore'))));
 app.use('/user', require('./controllers/userController')
-  (require('./services/userService')));
+  (require('./services/userService')()));
 app.use('/geo', require('./controllers/geoController')(require('./services/geoService')));
 
 // catch 404 and forward to error handler
@@ -35,17 +35,20 @@ app.use(function (err, req, res, next) {
 
   // set locals, only providing error in development
   res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+  var development = req.app.get('env') === 'development';
+  res.locals.error = development ? err : {};
 
   // if validation failed then send 400 bad request status
+  // note: consider applying 400 to InvalidArgumentError too
   if (err instanceof ValidationError)
     res.status(400);
   //  other errors should be threated as usual with status 500
   else
     res.status(err.status || 500)
-  if (err.message)
-    res.send(err.message);
-    res.end();
+  if (err.message) {
+    res.write(err.message);
+  }
+  res.end();
 });
 
 module.exports = app;
