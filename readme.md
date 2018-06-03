@@ -27,7 +27,7 @@ describe('class', () => {
 1. Install node and npm from https://nodejs.org/en/.
 1. Install postgres from https://www.postgresql.org/.
 1. Create a quote-db database in postgres.
-1. Update knexfile.js accordingly.
+1. Update models\knexfile.js accordingly.
 
 ## Build ##
 From the console or terminal run:<br/>
