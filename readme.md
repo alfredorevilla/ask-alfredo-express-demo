@@ -1,10 +1,10 @@
 # Nodejs Express demo app #
 
-#### This is a fast project with some rough edges left on purpose. Look the comments for the rationale behind them. ####
+#### This is a fast incomplete project with some tons of todos and missing things on purpose so you guys can practice to spot and enhace them. Look the comments for the rationale behind some of them. ####
 
 ## Highlights ##
 1. Three well separate layers: api (controllers), service and model (data stores): controllers talk to services, services to services and stores and stores to undelying db (postgre).
-1. Manual dependency injection, also default dependencies for added intellisense and ease of setup. Any approach has its pros and cons.
+1. Manual dependency injection, also default dependencies for added intellisense and ease of setup. Each approach has its pros and cons.
 1. Heavy use of validation across all layers.
 1. App response returns status 404 on vaidation error, 400 no resource or data not found and 500 on application errors.
 1. Code comments to explain the rationale behind them.
