@@ -57,7 +57,7 @@ describe('validator', () => {
 
         it('fails on custom validator unsuccesful validation', () => {
 
-            expect(() => validator.validate({ name: 'alfredo' }, { name: [{ validate: (value) => value === 'alfredo' }] })).to.throw();
+            expect(() => validator.validate({ name: 'alfredo' }, { name: [{ validate: (value) => value !== 'alfredo' }] })).to.throw();
 
         });
 
