@@ -1,6 +1,6 @@
 # Nodejs Express demo app #
 
-#### This is a fast incomplete project with some tons of todos and missing things on purpose so you guys can practice to spot and enhace them. Look the comments for the rationale behind some of them. ####
+#### This is a fast incomplete project with tons of todos and missing things on purpose so you guys can practice to spot and enhace them. Look the comments for the rationale behind some of them. ####
 
 ## Highlights ##
 1. Three well separate layers: api (controllers), service and model (data stores): controllers talk to services, services to services and stores and stores to undelying db (postgre).
