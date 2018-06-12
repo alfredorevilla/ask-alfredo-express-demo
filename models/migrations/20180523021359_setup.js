@@ -10,6 +10,9 @@ exports.up = async (knex) => {
             table.string('type').notNullable();
             table.string('address');
         }),
+        /*
+            todo: fk for consumerId and contractorId
+        */
         knex.schema.createTable('quote', (table) => {
             table.increments('id').primary();
             table.integer('consumerId').notNullable();

@@ -1,4 +1,6 @@
-# Quote API  demo #
+# Nodejs Express demo app #
+
+#### This is a fast project with some rough edges left on purpose. Look the comments for the rationale behind them. ####
 
 ## Highlights ##
 1. Three well separate layers: api (controllers), service and model (data stores): controllers talk to services, services to services and stores and stores to undelying db (postgre).
@@ -48,6 +50,7 @@ From the console or terminal run:<br/>
 
 ## Todo ##
 1. ~~Solve quote model items collection not setting quoteId FK on save.~~
+1. Document API!
 1. Review and ensure correct async unit test assertion.
 1. Seed database.
 1. Refactor models into classes to keep control of connection pool size.
@@ -69,4 +72,4 @@ From the console or terminal run:<br/>
 
 
 ---
-*Last update: 06/02/18*
+*Last update: 06/11/18*
