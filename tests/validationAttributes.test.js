@@ -10,13 +10,13 @@ describe('validationAttributes', () => {
 
         it('valid', () => {
 
-            expect(oneOf(['ask', 'jack']).validate('ask')).to.be.true;
+            expect(oneOf(['ask', 'alfredo']).validate('ask')).to.be.true;
 
         });
 
         it('valid', () => {
 
-            expect(oneOf(['ask', 'jack']).validate('jack')).to.be.true;
+            expect(oneOf(['ask', 'alfredo']).validate('alfredo')).to.be.true;
 
         });
 

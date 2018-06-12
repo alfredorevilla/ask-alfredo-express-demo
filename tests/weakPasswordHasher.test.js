@@ -9,31 +9,31 @@ describe('weakPasswordHasher', () => {
 
         it('hashed password must not be equal to clear password', () => {
 
-            expect(weakPasswordHasher.hashPassword('askjack')).to.not.be.eq('askjack');
+            expect(weakPasswordHasher.hashPassword('askalfredo')).to.not.be.eq('askalfredo');
 
         });
 
         it('verifyHashedPassword succeeds using hashed password', () => {
 
-            const hashedPassword = weakPasswordHasher.hashPassword('askjack');
+            const hashedPassword = weakPasswordHasher.hashPassword('askalfredo');
 
-            expect(weakPasswordHasher.verifyHashedPassword(hashedPassword, 'askjack')).to.be.true;
+            expect(weakPasswordHasher.verifyHashedPassword(hashedPassword, 'askalfredo')).to.be.true;
 
         });
 
         it('verifyHashedPassword fails using any hashed password', () => {
 
-            const hashedPassword = weakPasswordHasher.hashPassword('askjack');
+            const hashedPassword = weakPasswordHasher.hashPassword('askalfredo');
             
-            expect(weakPasswordHasher.verifyHashedPassword('anyotherhash', 'askjack')).to.be.false;
+            expect(weakPasswordHasher.verifyHashedPassword('anyotherhash', 'askalfredo')).to.be.false;
 
         });
 
         it('verifyHashedPassword fails using clear  password', () => {
 
-            const hashedPassword = weakPasswordHasher.hashPassword('askjack');
+            const hashedPassword = weakPasswordHasher.hashPassword('askalfredo');
             
-            expect(weakPasswordHasher.verifyHashedPassword('askjack', 'askjack')).to.be.false;
+            expect(weakPasswordHasher.verifyHashedPassword('askalfredo', 'askalfredo')).to.be.false;
 
         });
 

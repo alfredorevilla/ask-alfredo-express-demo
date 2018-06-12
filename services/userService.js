@@ -18,7 +18,7 @@ module.exports = (userStore = require('../models/userStore')(), validationServic
             /* 
                 todo: sendEmailMessage should not be long running to avoid blocking the response. submit message to a service or queue for later processing.
             */
-            sendEmailMessage(email, 'Your AskJack user account has been created',$`Congratulations! The account ${name} has been created`);
+            sendEmailMessage(email, 'Your AskAlfredo user account has been created',$`Congratulations! The account ${name} has been created`);
         }
     }
 };
